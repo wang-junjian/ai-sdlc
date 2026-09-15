@@ -15,7 +15,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## 仓库结构
 
 - `references/the-ai-native-sdlc-playbook/` — 核心参考文档：Anthropic 官方博客《The AI-Native SDLC playbook》的 Markdown 存档及配图。
-- `analysis/` — 研究产出：对比分析与方法论文档，**一律输出为 HTML 格式**。
+- `analysis/` — 研究产出：对比分析与方法论文档，**一律输出为 HTML 格式（亮/暗双主题）**。
 
 ## 本地参考项目（仓库外部）
 
