@@ -88,7 +88,7 @@
   <div class="table-wrap"><table>
     <tr><th>工具</th><th>工作流</th><th>对应产物</th></tr>
     <tr><td><strong>OpenSpec</strong></td><td><code>/opsx:explore</code>（先澄清想法、调研代码库）→ <code>/opsx:propose</code></td><td><code>changes/&lt;name&gt;/proposal.md</code> —— 最接近 intent.md 的定位：why + what changes</td></tr>
-    <tr><td><strong>Spec Kit</strong></td><td><code>/speckit-specify</code>（自动编号 001/002…、自动建分支、生成 <code>specs/[branch]/</code> 结构）</td><td><code>spec.md</code> 直接进入正式规格，跳过了 proto-spec 这一层</td></tr>
+    <tr><td><strong>Spec Kit</strong></td><td><code>/speckit.specify</code>（自动编号 001/002…、自动建分支、生成 <code>specs/[branch]/</code> 结构）</td><td><code>spec.md</code> 直接进入正式规格，跳过了 proto-spec 这一层</td></tr>
     <tr><td><strong>mattpocock</strong></td><td><code>research</code>（查一手资料存成 Markdown）→ 对话收敛后 <code>to-spec</code>（把对话发布到 issue tracker）</td><td>issue 即 intent，工件留在 tracker 而非 repo</td></tr>
   </table></div>
   <div class="callout"><strong>差异要点</strong>：OpenSpec 的 explore→propose 与 playbook 的"头脑风暴→intent.md"几乎一一对应；Spec Kit 把 Plan 和 Design 压缩成一步，适合意图已清晰的新项目；mattpocock 不定义 intent 格式，把载体交给团队已有的 issue tracker。</div>
@@ -98,7 +98,7 @@
   <div class="table-wrap"><table>
     <tr><th>工具</th><th>工作流</th><th>Spec 定义模式</th></tr>
     <tr><td><strong>OpenSpec</strong></td><td>propose 时生成 <code>specs/</code> + <code>design.md</code>；<code>/opsx:update</code> 保持各工件一致</td><td>纯 Markdown 的<strong>增量 delta spec</strong>：<code>## ADDED Requirements</code>，每条 Requirement 下挂 <code>WHEN/THEN</code> 场景；无特殊语法，brownfield 友好</td></tr>
-    <tr><td><strong>Spec Kit</strong></td><td><code>/speckit-constitution</code>（一次性确立原则，相当于 playbook 的"政策 skills"）→ specify → <code>/speckit-plan</code></td><td><strong>全量 spec</strong>：用户故事 + 验收标准 + 强制澄清标记 <code>[NEEDS CLARIFICATION]</code>；constitution 是全局不可违抗约束</td></tr>
+    <tr><td><strong>Spec Kit</strong></td><td><code>/speckit.constitution</code>（一次性确立原则，相当于 playbook 的"政策 skills"）→ specify → <code>/speckit.plan</code></td><td><strong>全量 spec</strong>：用户故事 + 验收标准 + 强制澄清标记 <code>[NEEDS CLARIFICATION]</code>；constitution 是全局不可违抗约束</td></tr>
     <tr><td><strong>mattpocock</strong></td><td><code>domain-modeling</code>（统一领域词汇）→ <code>grill-with-docs</code>（拷问式访谈 sharpen 设计，顺带产出 ADR 和术语表）→ 存疑先 <code>prototype</code>（一次性原型验证设计问题）</td><td>无固定模板，产出是 ADR + glossary + issue，<strong>人是设计的主导者</strong>，skill 只负责逼问</td></tr>
   </table></div>
   <div class="callout"><strong>差异要点</strong>：这是三者分化最大的环节。OpenSpec 的 delta spec + archive 机制天然支持"spec 随代码演进"（brownfield）；Spec Kit 的 constitution 最接近 playbook 说的"政策编码为 skills"；mattpocock 的 grill-with-docs 对应 playbook 里"像分析师一样提问"的步骤，但拒绝模板化。</div>
@@ -107,7 +107,7 @@
   <p>Playbook 主张：plan mode 起步、提交 <code>plan.md</code>、工件可被一个没看过对话的人执行。</p>
   <div class="table-wrap"><table>
     <tr><th>工具</th><th>工作流</th></tr>
-    <tr><td><strong>Spec Kit</strong></td><td><code>/speckit-plan</code>（读 spec + constitution，产出 plan + data-model + contracts + research）→ <code>/speckit-tasks</code>（拆成可执行任务清单）→ <code>/speckit-implement</code>。<strong>链路最完整</strong>，plan.md 是一等公民</td></tr>
+    <tr><td><strong>Spec Kit</strong></td><td><code>/speckit.plan</code>（读 spec + constitution，产出 plan + data-model + contracts + research）→ <code>/speckit.tasks</code>（拆成可执行任务清单）→ <code>/speckit.implement</code>。<strong>链路最完整</strong>，plan.md 是一等公民</td></tr>
     <tr><td><strong>OpenSpec</strong></td><td>快路径 <code>/opsx:propose</code> 一步生成全部规划工件；展开路径 <code>/opsx:new</code> → <code>/opsx:continue</code>（逐工件生成）→ <code>/opsx:ff</code>；执行用 <code>/opsx:apply</code> 按 <code>tasks.md</code> checklist 逐项打勾，<strong>允许实现中回改工件</strong>（fluid）</td></tr>
     <tr><td><strong>mattpocock</strong></td><td><code>to-tickets</code>（把 plan/spec 拆成 tracer-bullet tickets，声明依赖）→ <code>implement</code>（按 spec/ticket 实现）。超大块工作用 <code>wayfinder</code> 拆成跨会话的决策 ticket 地图</td></tr>
   </table></div>
@@ -118,7 +118,7 @@
   <div class="table-wrap"><table>
     <tr><th>工具</th><th>能力</th></tr>
     <tr><td><strong>mattpocock</strong></td><td><strong>最强</strong>：<code>tdd</code>（red-green-refactor，正是 playbook"先写失败测试再修"的玩法）；<code>diagnosing-bugs</code>（疑难 bug 的诊断循环）</td></tr>
-    <tr><td><strong>Spec Kit</strong></td><td><code>/speckit-converge</code>：实现完毕后对照 spec、plan、tasks <strong>收敛校验</strong>，反复直到报告 Converged</td></tr>
+    <tr><td><strong>Spec Kit</strong></td><td><code>/speckit.converge</code>：实现完毕后对照 spec、plan、tasks <strong>收敛校验</strong>，反复直到报告 Converged</td></tr>
     <tr><td><strong>OpenSpec</strong></td><td><code>/opsx:verify</code>：验证实现与工件是否一致</td></tr>
   </table></div>
   <div class="callout"><strong>差异要点</strong>：三者都覆盖"对照工件验证"，但只有 mattpocock 覆盖 playbook 强调的<strong>会话内即时反馈环</strong>（TDD）；Evals 这一层（对 agent 配置本身的回归测试）三者都没有，需按 playbook 自建 CI eval 套件。</div>

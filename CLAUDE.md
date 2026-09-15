@@ -23,7 +23,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 | 项目 | 路径 | 核心模式 |
 |---|---|---|
-| GitHub Spec Kit | `/Users/junjian/GitHub/github/spec-kit` | 规格即源码（spec 是 source of truth，代码是其生成物）。命令链：`/speckit-constitution` → `/speckit-specify` → `/speckit-plan` → `/speckit-tasks` → `/speckit-implement` → `/speckit-converge`。核心理念见 `spec-driven.md`，模板见 `templates/` |
+| GitHub Spec Kit | `/Users/junjian/GitHub/github/spec-kit` | 规格即源码（spec 是 source of truth，代码是其生成物）。命令链：`/speckit.constitution` → `/speckit.specify` → `/speckit.plan` → `/speckit.tasks` → `/speckit.implement` → `/speckit.converge`。核心理念见 `spec-driven.md`，模板见 `templates/` |
 | Fission-AI OpenSpec | `/Users/junjian/GitHub/Fission-AI/OpenSpec` | 面向 brownfield 的轻量增量模式：`openspec/changes/<change>/` 下 proposal.md + specs/（ADDED Requirements + WHEN/THEN 场景）+ design.md + tasks.md，验收后 archive 回 `openspec/specs/`。命令链：`/opsx:explore` → `/opsx:propose` → `/opsx:apply` → `/opsx:archive`。哲学：fluid / iterative / easy / brownfield-first |
 | mattpocock/skills | `/Users/junjian/GitHub/mattpocock/skills` | 反流程框架立场：不拥有流程，只提供小而可组合的 skills（`skills/engineering/`：tdd、to-spec、to-tickets、research、diagnosing-bugs 等），强调工程师保留控制权 |
 
